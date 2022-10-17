@@ -1,26 +1,38 @@
 package spring.boot.project.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "EVENTS")
 public class Event {
-	
-	long id;	
-	String name;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	long id;
+
+	String event_code;
 	String description;
-	
-	public Event() {}
-	
+
+	public Event() {
+	}
+
 	public Event(long id, String name, String description) {
 		super();
 		this.id = id;
-		this.name=name;
-		this.description=description;
+		this.event_code = name;
+		this.description = description;
 	}
 
 	public String getName() {
-		return name;
+		return event_code;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.event_code = name;
 	}
 
 	public long getId() {
