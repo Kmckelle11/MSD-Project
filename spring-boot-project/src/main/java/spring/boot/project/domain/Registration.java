@@ -23,11 +23,11 @@ public class Registration {
 	public Registration() {
 	}
 
-	public String getName() {
+	public String getEventId() {
 		return event_id;
 	}
 
-	public void setName(String name) {
+	public void setEventId(String name) {
 		this.event_id = name;
 	}
 

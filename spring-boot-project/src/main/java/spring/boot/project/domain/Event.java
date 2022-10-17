@@ -1,5 +1,6 @@
 package spring.boot.project.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,24 +15,20 @@ public class Event {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long id;
 
+	@Column(name = "EVENT_CODE")
 	String event_code;
+	
+	String title;
 	String description;
 
 	public Event() {
 	}
 
-	public Event(long id, String name, String description) {
-		super();
-		this.id = id;
-		this.event_code = name;
-		this.description = description;
-	}
-
-	public String getName() {
+	public String getEventCode() {
 		return event_code;
 	}
 
-	public void setName(String name) {
+	public void setEventCode(String name) {
 		this.event_code = name;
 	}
 
@@ -49,6 +46,14 @@ public class Event {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }
