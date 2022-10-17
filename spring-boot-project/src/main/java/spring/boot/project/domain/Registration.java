@@ -2,6 +2,7 @@ package spring.boot.project.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,20 +17,14 @@ public class Registration {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	long id;
 	
+	@Column(name="EVENT_ID")
 	String event_id;
+	
+	@Column(name="CUSTOMER_ID")
 	String customer_id;
+	
 	Date registration_date;
-
-	public Registration() {
-	}
-
-	public String getEventId() {
-		return event_id;
-	}
-
-	public void setEventId(String name) {
-		this.event_id = name;
-	}
+	String notes;
 
 	public long getId() {
 		return id;
@@ -37,6 +32,14 @@ public class Registration {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getEvent_id() {
+		return event_id;
+	}
+
+	public void setEvent_id(String event_id) {
+		this.event_id = event_id;
 	}
 
 	public String getCustomer_id() {
@@ -53,6 +56,14 @@ public class Registration {
 
 	public void setRegistration_date(Date registration_date) {
 		this.registration_date = registration_date;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
 	}
 
 }

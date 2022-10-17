@@ -39,7 +39,7 @@ public class EventAPI {
 	
 	@PostMapping
 	public ResponseEntity<?> addEvent(@RequestBody Event newEvent, UriComponentsBuilder uri){
-		if(newEvent.getId() != 0 || newEvent.getEventCode() == null) {
+		if(newEvent.getId() != 0 || newEvent.getCode() == null || newEvent.getTitle() == null || newEvent.getDescription() == null) {
 			return ResponseEntity.badRequest().build();
 		}
 		newEvent = repo.save(newEvent);
@@ -50,11 +50,11 @@ public class EventAPI {
 	}
 	
 	@PutMapping("/{eventId}")
-	public ResponseEntity<?> putEvent(@RequestBody Event event, @PathVariable("eventId")long id){
-		if(event.getId() != id || event.getEventCode() == null){
+	public ResponseEntity<?> putEvent(@RequestBody Event newEvent, @PathVariable("eventId")long eventID){
+		if(newEvent.getId() != eventID || newEvent.getCode() == null || newEvent.getTitle() == null || newEvent.getDescription() == null){
 			return ResponseEntity.badRequest().build();
 		}
-		event = repo.save(event);
+		newEvent = repo.save(newEvent);
 		return ResponseEntity.ok().build();
 	}
 	

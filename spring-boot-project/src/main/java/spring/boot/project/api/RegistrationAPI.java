@@ -16,12 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import spring.boot.project.domain.Event;
 import spring.boot.project.domain.Registration;
 import spring.boot.project.repository.RegistrationRepository;
 
 @RestController
-@RequestMapping("/registration")
+@RequestMapping("/registrations")
 public class RegistrationAPI {
 	
 	@Autowired
@@ -39,7 +38,7 @@ public class RegistrationAPI {
 	
 	@PostMapping
 	public ResponseEntity<?> addRegistration(@RequestBody Registration newRegistration, UriComponentsBuilder uri){
-		if(newRegistration.getId() != 0 || newRegistration.getEventId() == null || newRegistration.getCustomer_id() == null) {
+		if(newRegistration.getId() != 0 || newRegistration.getEvent_id() == null || newRegistration.getCustomer_id() == null || newRegistration.getRegistration_date() == null) {
 			return ResponseEntity.badRequest().build();
 		}
 		newRegistration = repo.save(newRegistration);
@@ -49,12 +48,12 @@ public class RegistrationAPI {
 		return response;
 	}
 	
-	@PutMapping("/{registrationId}")
-	public ResponseEntity<?> putEvent(@RequestBody Registration registration, @PathVariable("registrationId")long id){
-		if(registration.getId() != id || registration.getEventId() == null){
+	@PutMapping("/{eventId}")
+	public ResponseEntity<?> putRegistration(@RequestBody Registration newRegistration, @PathVariable("eventId")long eventID){
+		if(newRegistration.getEvent_id() == null || newRegistration.getCustomer_id() == null){
 			return ResponseEntity.badRequest().build();
 		}
-		registration = repo.save(registration);
+		newRegistration = repo.save(newRegistration);
 		return ResponseEntity.ok().build();
 	}
 	
