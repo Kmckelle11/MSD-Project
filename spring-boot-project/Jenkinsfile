@@ -5,7 +5,7 @@ node {
     
     stage ("Gradle Build - DataService") {
 	
-        sh 'gradle clean build'
+        sh '-b spring-boot-project/build.gradle gradle clean build'
 
     }
     
