@@ -22,7 +22,7 @@ node {
 	  if(response=="Yes") {
 
 	    stage('Release- DataService') {
-	     sh 'gradle build -x test'
+	     sh 'gradle build -x test -b spring-boot-project/build.gradle'
 	     sh 'echo DataService is ready to release!'
 
 	    }
